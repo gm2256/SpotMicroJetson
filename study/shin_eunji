@@ -1,0 +1,5 @@
+폴더 mirco_spot 생성 
+ubuntu 22.04
+가상환경 oroca 실행
+
+source oroca/bin/activate
