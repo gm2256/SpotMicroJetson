@@ -18,6 +18,7 @@ import random
 import Kinematics.kinematics as kn
 import spotmicroai
 import servo_controller
+from imu_reader import ImuReader
 
 from multiprocessing import Process
 from Common.multiprocess_kb import KeyInterrupt
@@ -75,6 +76,7 @@ motion=KinematicMotion(Lp)
 resetPose()
 
 trotting=TrottingGait()
+imu=ImuReader()
 
 def main(id, command_status):
     jointAngles = []
@@ -91,6 +93,10 @@ def main(id, command_status):
 
         # robot height
         height = 40
+
+        # read body tilt from IMU
+        tilt = imu.read()
+        print(tilt)
 
         # calculate robot step command from keyboard inputs
         result_dict = command_status.get()
